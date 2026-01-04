@@ -1,19 +1,30 @@
 import Editor from "@monaco-editor/react";
 
-export default function CodeEditor() {
+export default function CodeEditor({
+  code,
+  setCode,
+  language = "javascript",
+}) {
   return (
-    <Editor
-      height="100%"
-      width="100%"
-      defaultLanguage="javascript"
-      defaultValue={`// Welcome to DotRepl\n\nconsole.log("Hello world");`}
-      theme="vs-dark"
-      options={{
-        fontSize: 14,
-        minimap: { enabled: false },
-        automaticLayout: true,
-      }}
-    />
+    <div className="h-full w-full">
+      <Editor
+        height="100%"
+        width="100%"
+        language={language}
+        value={code}
+        onChange={(value) => setCode(value || "")}
+        theme="vs-dark"
+        options={{
+          fontSize: 14,
+          minimap: { enabled: false },
+          automaticLayout: true,
+          scrollBeyondLastLine: false,
+          wordWrap: "on",
+          tabSize: 2,
+          cursorBlinking: "smooth",
+        }}
+      />
+    </div>
   );
 }
 
