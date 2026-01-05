@@ -34,12 +34,23 @@ export default function App() {
       {/* Top bar */}
       <header className="h-12 flex items-center justify-between px-4 border-b border-neutral-800">
         <h1 className="font-semibold text-lg text-white">DotRepl</h1>
-        <button
-          onClick={runCode}
-          className="bg-indigo-600 hover:bg-indigo-500 px-4 py-1.5 rounded text-sm font-medium"
-        >
-          Run
-        </button>
+<button
+  onClick={runCode}
+  className="
+    relative flex items-center gap-2
+    bg-gradient-to-r from-indigo-600 to-purple-600
+    hover:from-indigo-500 hover:to-purple-500
+    text-white text-sm font-semibold
+    px-4 py-1.5 rounded-md
+    shadow-lg shadow-indigo-600/30
+    transition-all duration-200
+  "
+>
+  ▶ Run
+</button>
+
+
+
       </header>
 
       {/* Editor + Output */}
