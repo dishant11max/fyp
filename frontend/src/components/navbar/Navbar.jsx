@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,16 +10,16 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-md border-white/10 py-3' 
-          : 'bg-transparent border-transparent py-5'
+        scrolled
+          ? "bg-black/80 backdrop-blur-md border-white/10 py-3"
+          : "bg-transparent border-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -34,9 +35,9 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLink href="#" active>Home</NavLink>
-          <NavLink href="#">About</NavLink>
-          <NavLink href="#">Community</NavLink>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/community">Community</Link>
         </div>
 
         {/* Desktop Auth & CTA */}
@@ -50,7 +51,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden text-zinc-300 hover:text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -63,7 +64,9 @@ const Navbar = () => {
         <div className="md:hidden absolute top-full left-0 w-full bg-zinc-950 border-b border-zinc-800 p-6 flex flex-col gap-4 shadow-2xl animate-in slide-in-from-top-5">
           <MobileNavLink onClick={() => setIsOpen(false)}>Home</MobileNavLink>
           <MobileNavLink onClick={() => setIsOpen(false)}>About</MobileNavLink>
-          <MobileNavLink onClick={() => setIsOpen(false)}>Community</MobileNavLink>
+          <MobileNavLink onClick={() => setIsOpen(false)}>
+            Community
+          </MobileNavLink>
           <div className="h-px bg-zinc-800 my-2"></div>
           <button className="text-zinc-400 hover:text-white font-medium text-left py-2">
             Sign In
@@ -78,10 +81,10 @@ const Navbar = () => {
 };
 
 const NavLink = ({ children, active, href }) => (
-  <a 
-    href={href} 
+  <a
+    href={href}
     className={`text-sm font-medium transition-colors ${
-      active ? 'text-white' : 'text-zinc-400 hover:text-violet-400'
+      active ? "text-white" : "text-zinc-400 hover:text-violet-400"
     }`}
   >
     {children}
@@ -89,7 +92,7 @@ const NavLink = ({ children, active, href }) => (
 );
 
 const MobileNavLink = ({ children, onClick }) => (
-  <button 
+  <button
     onClick={onClick}
     className="text-lg font-medium text-zinc-300 hover:text-violet-400 text-left py-2"
   >
