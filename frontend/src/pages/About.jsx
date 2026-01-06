@@ -85,9 +85,15 @@ const AboutPage = () => {
                 <Layout size={16} className="text-violet-400"/> Frontend Engineering
               </h3>
               <ul>
+ feature/sahil-work
+                <TeamMember name="Mohammed Sahil" role="Frontend Head" />
+                <TeamMember name="Arbazuddin Khan" role="Junior Frontend Engineer" />
+                <TeamMember name="Sk Rahis Mohammed" role="Junior Frontend Engineer" />
+
                 <TeamMember name="Md Sahil" role="Frontend Head" />
                 <TeamMember name="Arbaz Khan" role="Junior Frontend Engineer" />
                 <TeamMember name="Sk Rais" role="Junior Frontend Engineer" />
+ main
               </ul>
             </div>
             <div>
@@ -96,7 +102,11 @@ const AboutPage = () => {
               </h3>
               <ul>
                 <TeamMember name="Subasis Panigrahi" role="Backend Head" />
+ feature/sahil-work
+                <TeamMember name="Himanshu Sekhar Das" role="Backend Engineer" />
+
                 <TeamMember name="Himanshu Das" role="Backend Engineer" />
+ main
                 <TeamMember name="Dishant Savadia" role="Backend Head" />
               </ul>
             </div>
