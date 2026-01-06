@@ -89,10 +89,6 @@ const AboutPage = () => {
                 <TeamMember name="Mohammed Sahil" role="Frontend Head" />
                 <TeamMember name="Arbazuddin Khan" role="Junior Frontend Engineer" />
                 <TeamMember name="Sk Rahis Mohammed" role="Junior Frontend Engineer" />
-
-                <TeamMember name="Md Sahil" role="Frontend Head" />
-                <TeamMember name="Arbaz Khan" role="Junior Frontend Engineer" />
-                <TeamMember name="Sk Rais" role="Junior Frontend Engineer" />
  main
               </ul>
             </div>
