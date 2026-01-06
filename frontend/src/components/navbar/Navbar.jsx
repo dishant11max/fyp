@@ -37,6 +37,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
+          <Link to="/docs">Docs</Link>
           <Link to="/community">Community</Link>
         </div>
 
