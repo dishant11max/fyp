@@ -43,9 +43,11 @@ const Navbar = () => {
 
         {/* Desktop Auth & CTA */}
         <div className="hidden md:flex items-center gap-4">
+         <Link to="/signin">
           <button className="text-zinc-400 hover:text-white font-medium text-sm transition-colors">
             Sign In
           </button>
+          </Link>
           <button className="px-5 py-2.5 rounded-full bg-white text-black font-bold text-sm hover:bg-zinc-200 transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             Start Coding
           </button>
@@ -69,9 +71,11 @@ const Navbar = () => {
             Community
           </MobileNavLink>
           <div className="h-px bg-zinc-800 my-2"></div>
+          <Link to="/signin" onClick={() => setIsOpen(false)}>
           <button className="text-zinc-400 hover:text-white font-medium text-left py-2">
             Sign In
           </button>
+          </Link>
           <button className="w-full py-3 rounded-lg bg-violet-600 text-white font-bold text-center">
             Start Coding
           </button>
