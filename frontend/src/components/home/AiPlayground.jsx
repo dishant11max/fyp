@@ -43,18 +43,19 @@ const AiPlayground = () => {
     setError('');
     setCode('// Summoning digital spirits...');
     
-    const apiKey = ""; // Injected at runtime
+    const apiKey = "AIzaSyAlzZaNaSOBMSm5xWfTXmG6ergRO0fdOJ8"; // Injected at runtime
     const systemPrompt = "You are an expert coding assistant for a platform called .repl. Generate clean, efficient, and modern code based on the user's request. Output ONLY the raw code, no markdown backticks, no explanations unless specifically asked in the comments of the code. If the user asks for a specific language, use it. Default to JavaScript if unsure.";
 
     try {
       const response = await fetchWithRetry(
+        // using gemini-2.5-flash which is the standard fast model
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [{ parts: [{ text: prompt }] }],
-            systemInstruction: { parts: [{ text: systemPrompt }] }
+            
           })
         }
       );
