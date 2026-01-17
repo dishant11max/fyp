@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react"; // Removed useEffect since we don't need scroll detection anymore
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Removed the scroll listener logic entirely to make it "static" and consistent.
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
-        scrolled
-          ? "bg-black/80 backdrop-blur-md border-white/10 py-3"
-          : "bg-transparent border-transparent py-5"
-      }`}
+      // Changed 'fixed' to 'sticky'. 
+      // Added consistent background color and border to prevent white spaces showing through.
+      className="sticky top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-white/10 py-3 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
@@ -35,18 +26,18 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/docs">Docs</Link>
-          <Link to="/community">Community</Link>
+          <Link to="/" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">Home</Link>
+          <Link to="/about" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">About</Link>
+          <Link to="/docs" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">Docs</Link>
+          <Link to="/community" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">Community</Link>
         </div>
 
         {/* Desktop Auth & CTA */}
         <div className="hidden md:flex items-center gap-4">
-         <Link to="/signin">
-          <button className="text-zinc-400 hover:text-white font-medium text-sm transition-colors">
-            Sign In
-          </button>
+          <Link to="/signin">
+            <button className="text-zinc-400 hover:text-white font-medium text-sm transition-colors">
+              Sign In
+            </button>
           </Link>
           <button className="px-5 py-2.5 rounded-full bg-white text-black font-bold text-sm hover:bg-zinc-200 transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             Start Coding
@@ -72,9 +63,9 @@ const Navbar = () => {
           </MobileNavLink>
           <div className="h-px bg-zinc-800 my-2"></div>
           <Link to="/signin" onClick={() => setIsOpen(false)}>
-          <button className="text-zinc-400 hover:text-white font-medium text-left py-2">
-            Sign In
-          </button>
+            <button className="text-zinc-400 hover:text-white font-medium text-left py-2 w-full">
+              Sign In
+            </button>
           </Link>
           <button className="w-full py-3 rounded-lg bg-violet-600 text-white font-bold text-center">
             Start Coding
@@ -85,17 +76,7 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ children, active, href }) => (
-  <a
-    href={href}
-    className={`text-sm font-medium transition-colors ${
-      active ? "text-white" : "text-zinc-400 hover:text-violet-400"
-    }`}
-  >
-    {children}
-  </a>
-);
-
+// Simplified the NavLink helper since we are using Link component directly above for cleaner code
 const MobileNavLink = ({ children, onClick }) => (
   <button
     onClick={onClick}

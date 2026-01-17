@@ -43,36 +43,45 @@ const AiPlayground = () => {
     setError('');
     setCode('// Summoning digital spirits...');
     
-    const apiKey = "AIzaSyAlzZaNaSOBMSm5xWfTXmG6ergRO0fdOJ8"; // Injected at runtime
-    const systemPrompt = "You are an expert coding assistant for a platform called .repl. Generate clean, efficient, and modern code based on the user's request. Output ONLY the raw code, no markdown backticks, no explanations unless specifically asked in the comments of the code. If the user asks for a specific language, use it. Default to JavaScript if unsure.";
-
+    // ⚠️ SECURITY WARNING: You have exposed your API Key in client-side code.
+    // Anyone who visits your site can steal this key and use your quota.
+    // For a final project, you should move this to a backend server (Node/Express).
+    const apiKey = process.env.GEMINI_API_KEY; 
+    
+    // USE THIS MODEL NAME: Standard, reliable model for the public API
+    const modelName = "gemini-1.5-flash"; 
+    
     try {
-      const response = await fetchWithRetry(
-        // using gemini-2.5-flash which is the standard fast model
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            
+            contents: [{ parts: [{ text: prompt }] }]
           })
         }
       );
+
+      // Better error handling to see exactly WHY it failed
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("API Error Details:", errorData); // Check your console (F12) for this!
+        throw new Error(errorData.error?.message || `Error ${response.status}: ${response.statusText}`);
+      }
       
       const data = await response.json();
       const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
       if (generatedText) {
-        // Clean up markdown code blocks if the model adds them despite instructions
         const cleanCode = generatedText.replace(/^```[\w]*\n/g, '').replace(/\n```$/g, '');
         setCode(cleanCode);
       } else {
         setError("The spirits were silent. Try again.");
       }
     } catch (err) {
-      console.error(err);
-      setError("Failed to connect to the AI mainframe. Please try again.");
+      console.error("Full Error:", err);
+      setError(err.message || "Failed to connect. Check console for details.");
       setCode('// Error generating code.');
     } finally {
       setLoading(false);

@@ -1,1 +1,8 @@
 @import "tailwindcss";
+@layer base {
+  html, body {
+    /* Forces the browser canvas to be black, preventing white overscroll gaps */
+    background-color: #09090b; /* matches tailwind zinc-950 */
+    color: white;
+  }
+}
