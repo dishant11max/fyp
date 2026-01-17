@@ -9,27 +9,47 @@ const Navbar = () => {
 
   return (
     <nav
-      // Changed 'fixed' to 'sticky'. 
+      // Changed 'fixed' to 'sticky'.
       // Added consistent background color and border to prevent white spaces showing through.
       className="sticky top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-white/10 py-3 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-500 flex items-center justify-center text-white font-bold font-mono">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold font-mono">
             {`>_`}
           </div>
-          <span className="text-2xl font-bold text-white font-mono tracking-tighter group-hover:text-violet-400 transition-colors">
+          <span className="text-2xl font-bold text-white font-mono tracking-tighter group-hover:text-blue-400 transition-colors">
             .repl
           </span>
         </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">Home</Link>
-          <Link to="/about" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">About</Link>
-          <Link to="/docs" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">Docs</Link>
-          <Link to="/community" className="text-sm font-medium text-zinc-400 hover:text-white hover:text-violet-400 transition-colors">Community</Link>
+          <Link
+            to="/"
+            className="text-sm font-medium text-zinc-400 hover:text-white hover:text-blue-400 transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            to="/about"
+            className="text-sm font-medium text-zinc-400 hover:text-white hover:text-blue-400 transition-colors"
+          >
+            About
+          </Link>
+          <Link
+            to="/docs"
+            className="text-sm font-medium text-zinc-400 hover:text-white hover:text-blue-400 transition-colors"
+          >
+            Docs
+          </Link>
+          <Link
+            to="/community"
+            className="text-sm font-medium text-zinc-400 hover:text-white hover:text-blue-400 transition-colors"
+          >
+            Community
+          </Link>
         </div>
 
         {/* Desktop Auth & CTA */}
@@ -67,7 +87,7 @@ const Navbar = () => {
               Sign In
             </button>
           </Link>
-          <button className="w-full py-3 rounded-lg bg-violet-600 text-white font-bold text-center">
+          <button className="w-full py-3 rounded-lg bg-blue-600 text-white font-bold text-center">
             Start Coding
           </button>
         </div>
@@ -80,7 +100,7 @@ const Navbar = () => {
 const MobileNavLink = ({ children, onClick }) => (
   <button
     onClick={onClick}
-    className="text-lg font-medium text-zinc-300 hover:text-violet-400 text-left py-2"
+    className="text-lg font-medium text-zinc-300 hover:text-blue-400 text-left py-2"
   >
     {children}
   </button>

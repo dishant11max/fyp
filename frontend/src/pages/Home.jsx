@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
-      <AiPlayground/>
+      <AiPlayground />
       <CTASection />
       <Footer />
     </div>

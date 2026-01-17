@@ -1,4 +1,4 @@
-const InputField = ({ label, type = 'text', placeholder, icon }) => {
+const InputField = ({ label, type = "text", placeholder, icon }) => {
   return (
     <div>
       <label className="block text-sm font-medium text-zinc-400 mb-1">
@@ -12,7 +12,7 @@ const InputField = ({ label, type = 'text', placeholder, icon }) => {
           type={type}
           required
           placeholder={placeholder}
-          className="block w-full pl-10 py-3 border border-zinc-800 rounded-xl bg-zinc-900/50 text-zinc-200 focus:outline-none focus:ring-2 focus:ring-violet-600"
+          className="block w-full pl-10 py-3 border border-zinc-800 rounded-xl bg-zinc-900/50 text-zinc-200 focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
       </div>
     </div>
